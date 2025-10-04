@@ -43,7 +43,10 @@ const routes = createBrowserRouter([
         path: "/admin",
         element: <AdminRoute />, // This will check if the user is an admin
         children: [
-          { path: "", element: <AdminDashboard /> }, // Admin Dashboard
+          {
+            path: "",
+            element: <AdminDashboard />
+          }, // Admin Dashboard
         ],
       },
     ],

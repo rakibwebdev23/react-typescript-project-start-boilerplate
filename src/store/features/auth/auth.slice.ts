@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TUser } from "@/types/user";
+import { TUser } from "@/store/storeTypes/user";
 import { RootState } from "@/store/store";
 
 type Tstate = {
