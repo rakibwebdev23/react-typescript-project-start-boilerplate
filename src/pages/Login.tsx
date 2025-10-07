@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "@/store/hook";
+import { setUser } from "@/store/features/auth/auth.slice";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -20,9 +22,11 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onSubmit = (data: LoginFormInputs) => {
     console.log("Login Data:", data);
+    dispatch(setUser(data));
     navigate("/");
   };
 
