@@ -4,26 +4,27 @@ export const userAPI = baseAPI.injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation({
       query: (data: { email: string; password: string }) => ({
-        url: "/auth/login",
+        url: "/auth/login/",
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Auth"],
     }),
-    register: build.mutation({
+    registerClient: build.mutation({
       query: (data) => ({
-        url: "/auth/register",
+        url: "/auth/register/",
         method: "POST",
         body: data,
       }),
-      invalidatesTags: [],
+      invalidatesTags: ["Auth"],
     }),
     verifyOTP: build.mutation({
       query: (data) => ({
-        url: "/auth/signup-verify-otp",
+        url: "/auth/signup-verify-otp/",
         method: "POST",
         body: data,
       }),
-      invalidatesTags: [],
+      invalidatesTags: ["Auth"],
     }),
 
     updatePassword: build.mutation({
@@ -32,13 +33,14 @@ export const userAPI = baseAPI.injectEndpoints({
         method: "PUT",
         body: payload,
       }),
+      invalidatesTags: ["Auth"],
     }),
   }),
 });
 
 export const {
   useLoginMutation,
+  useRegisterClientMutation,
   useVerifyOTPMutation,
-  useRegisterMutation,
   useUpdatePasswordMutation,
 } = userAPI;
